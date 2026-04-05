@@ -15,7 +15,10 @@ class SongTracker:
         returns True on sucess False on fail.\n
         session can be found under Songtracker.session
         """
-        self.session = await MediaManager.request_async()
+        try:
+            self.session = await MediaManager.request_async()
+        except OSError:
+            print("Thank you Microslop")
         if self.session:
             return True
         return False
